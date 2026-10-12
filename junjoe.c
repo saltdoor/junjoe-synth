@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <stdio.h>
 
 #define PI 3.14159265358979323846f
 #define NUM_VOICES 6
@@ -254,8 +255,8 @@ __declspec(dllexport) AEffect* VSTPluginMain(audioMasterCallback audioMaster) {
 
     effect->magic = 0x56737450; // 'VstP'
     effect->dispatcher = dispatcher;
-    effect->setParameter = setParameter;
-    effect->getParameter = getParameter;
+    effect->setParameter = set_parameter;
+    effect->getParameter = get_parameter;
     effect->processReplacing = process_replacing;
     effect->numPrograms = 1;
     effect->numParams = NUM_PARAMS;
