@@ -1,0 +1,13 @@
+name: Build VST
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile DLL
+        run: gcc -shared -O3 -o junjoe.dll junjoe.c
+      - uses: actions/upload-artifact@v4
+        with:
+          name: junjoe-vst
+          path: junjoe.dll
